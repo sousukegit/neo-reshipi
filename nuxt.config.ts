@@ -4,8 +4,12 @@ export default defineNuxtConfig({
   typescript:{
     strict:true,
   },
-  _modules:[
-    "@nuxtjs/tailwindcss"
-  ],
+  css: ["~/assets/css/tailwind.css",],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 
 })
