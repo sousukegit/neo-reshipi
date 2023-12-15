@@ -17,4 +17,6 @@ defineProps<{
     darkOrEmpty:string|null;
     switchMode:()=>void;
 }>();
+
+
 </script>

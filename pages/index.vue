@@ -1,10 +1,12 @@
 <template>
   <div :class="mode">
+    
     <TheContainer>
+    <Thebreadcrumbs></Thebreadcrumbs>
+    <ModeSwitcher :dark-or-empty="mode" :switch-mode="switchMode"></ModeSwitcher>
     <div class="dark:bg-coffee">
 
     
-  <ModeSwitcher :dark-or-empty="mode" :switch-mode="switchMode"></ModeSwitcher>
   
  
   <div class="bg-emerald-200 dark:bg-emerald-900 dark:text-white" >sousuek</div>
@@ -30,9 +32,7 @@ const switchMode = () =>{
   mode.value =mode.value? "" :"dark";
   
 }
-const text =ref<string>("")
-const num =ref<""|number>("")
-console.log(useRoute())
+
 
 
 </script>
