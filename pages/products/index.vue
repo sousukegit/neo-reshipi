@@ -3,7 +3,7 @@
       <AppH1>ポートフォリオ</AppH1>
       <div>aikon</div>
       <AppH2>ここに前つくったポートフォリオを張る</AppH2>
-      <AppLink href="reshipi">レシピ</AppLink>
+      <AppLink href="products/reshipe_memo">レシピ</AppLink>
       <AppLink href="">マップ</AppLink>
       <!--github ブログ２こ　案件対応したもの　マップなど-->
 

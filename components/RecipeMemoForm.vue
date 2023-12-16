@@ -83,7 +83,8 @@ const addItem =() =>{
  })
 }
 
-//以下DB処理
+
+//以下DB処理-----------
 //INdexdDBのDB名とテーブル名
 const dbName = "recipe-memo"
 const tableName = "recipe";
@@ -106,7 +107,7 @@ const submit = () =>{
         return;
     }
 
-    //IndexedDBを使うには、まずIndexedDBを開く必要がある
+//IndexedDBを使うには、まずIndexedDBを開く必要がある
 //なので最初にそのためのリクエストをopen関数で実行する
 //その際、引数には使いたい任意のDB名を渡す。
 const openRequest = indexedDB.open(dbName);

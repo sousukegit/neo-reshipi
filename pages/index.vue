@@ -10,7 +10,7 @@
           <div class="">
             <AppH2>メニュー</AppH2>
             <AppLink href="/profile">プロフィール</AppLink>
-            <AppLink href="/portfolio">作品</AppLink>
+            <AppLink href="/products">作品</AppLink>
           </div>
 
         </div>
