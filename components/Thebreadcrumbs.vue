@@ -1,16 +1,19 @@
 <template>
-    <span class="inline-flex items-center gap-4"></span>
-    <span v-for="(url,index) in urlList">
-    <NuxtLink v-if="index < urlList.length-1"
-    :href="url"
-    :key="url"
-    class="inline-block rounded-full h-7 w-7 bg-accent-400 shadow-lg dark:bg-accent-200 hover:opacity-20"
-    ></NuxtLink>
-    <span v-else
-    key="current"
-    class="inline-block rounded-full h-7 w-7 bg-accent-700 shadow-lg dark:bg-accent-50 hover:opacity-20"
-    >        
-    </span>
+    <span class="inline-flex justify-center gap-4">
+        <span v-for="(url,index) in urlList">
+            <NuxtLink v-if="index < urlList.length-1"
+            :href="url"
+            :key="url"
+            class="inline-block rounded-full h-7 w-7 bg-accent-400 shadow-lg dark:bg-accent-200 hover:opacity-20"
+            ></NuxtLink>
+        
+        <span v-else
+        key="current"
+        class="inline-block rounded-full h-7 w-7 bg-accent-700 shadow-lg dark:bg-accent-50 hover:opacity-20"
+        > </span>
+
+        </span>
+        
     </span>
     
 
