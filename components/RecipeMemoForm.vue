@@ -56,7 +56,7 @@ const props = defineProps<{
     modelValue:RecipeModel;
     //レシピid
     id:number;
-    //レシピの書き込み時にリダイレクト関数
+    //レシピの書き込み時にリダイレクトする関数
     redirectOnSuccess:string;
 }>()
 
@@ -82,9 +82,85 @@ const addItem =() =>{
     unit:"",
  })
 }
-//登録処理
+
+//以下DB処理
+//INdexdDBのDB名とテーブル名
+const dbName = "recipe-memo"
+const tableName = "recipe";
+
+//レシピ保存処理
 const submit = () =>{
     console.log(props.modelValue)
-}
+    
+    //from.valueの中味を分割代入でばらす
+    const {name, items, howToCook} = form.value;
+
+    //いずれかのフォームが空白ならエラー
+    if(!name||
+    !howToCook||
+    items.some(
+        (item) => !item.name || !Number.isFinite(item.amount)||!item.unit
+    )    
+    ){
+        alert("いずれかのフォームが空白です");
+        return;
+    }
+
+    //IndexedDBを使うには、まずIndexedDBを開く必要がある
+//なので最初にそのためのリクエストをopen関数で実行する
+//その際、引数には使いたい任意のDB名を渡す。
+const openRequest = indexedDB.open(dbName);
+
+//IndexedDBの軌道に成功したら、次のコールバック関数を実行
+openRequest.onsuccess = (event) => {
+
+    //起動しただけではレシピの保存をできない
+    //まずコールバック関数の引数からIndexedDBのインスタンスを取得する
+    //なお型推論が弱いので、より厳密な方を明示している
+    const db =(event.target as IDBRequest).result;
+
+    //トランザクションを開始
+    const transaction =db.transaction(tableName,"readwrite");
+
+    //テーブル名を指定して、IndexedDBからテーブルを取得する
+    //（厳密にはテーブルでなくオブジェクトすとあ）
+    //なおこのテーブルは親が事前に作成しておく前提
+    //型推論が弱いので、厳密な方を明示
+    const table =transaction.objectStore(tableName) as IDBObjectStore;
+    
+    //ここまででIndexedDBへの操作が可能になる
+
+    //親から渡されたレシピID
+    const id = props.id;
+
+    //テーブルへのレシピ保存を試行する
+    const putRequest = table.put({
+        //親がidをindexedDBのキーとして使える用準備してある前提
+        id,
+        name,
+        items: items.map((i) => ({
+            //仕様上、シリアライズ可能値にすべきなのでmapする
+            name: i.name,
+            amount:i.amount,
+            unit:i.unit,
+        })),
+        howToCook,
+    });
+    //レシピ保存に成功したら、親から渡されたリダイレクト関数を実行
+    putRequest.onsuccess = () => {
+        alert("保存に成功しました");
+        navigateTo(props.redirectOnSuccess);
+    };
+    //レジピ保存に失敗したらアラートを出す
+    putRequest.onerror = () =>{
+        alert("保存に失敗しました");
+    };
+ };
+
+
+};
+
+
+
 
 </script>

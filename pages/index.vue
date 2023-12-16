@@ -9,8 +9,8 @@
           </div>
           <div class="">
             <AppH2>メニュー</AppH2>
-            <AppLink :href="a">プロフィール</AppLink>
-            <AppLink :href="a">作品</AppLink>
+            <AppLink href="/profile">プロフィール</AppLink>
+            <AppLink href="/portfolio">作品</AppLink>
           </div>
 
         </div>
