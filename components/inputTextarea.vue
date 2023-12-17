@@ -1,7 +1,8 @@
 <template>
 
     <div>
-        <textarea v-model="modelValue" class="border-2 h-32"></textarea>
+        <textarea v-model="modelValue" 
+        class="border-2 h-32 w-full rounded-lg p-2 dark:bg-coffee"></textarea>
     </div>
 
 </template>

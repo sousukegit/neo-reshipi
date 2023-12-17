@@ -4,21 +4,26 @@
             レシピ名
             <InputText v-model="form.name" ></InputText>
         </label>
-        <div v-for="(item,index) in form.items">
-            <div>
-                <button @click="removeItem(index)">材料削除</button>
+        <div v-for="(item,index) in form.items" class="bg-main-100 rounded-md p-4 shadow-md dark:bg-coffee dark:border-2 ">
+            <div class="text-right">
+                <ButtonSecondary :on-click="() => removeItem(index)">材料{{index+1}}を削除する</ButtonSecondary>
+              
             </div>
-            <label>材料{{ index +1 }}の名前
-            <InputText v-model="item.name"></InputText>
-            </label>
-            <label>材料{{ index +1 }}の個数
-            <InputNum v-model="item.amount"></InputNum>
-            </label>
-            <label>材料{{ index +1 }}の単位
-            <InputText v-model="item.unit"></InputText>
-            </label>
-            <div>
-                <button @click="addItem">材料追加</button>
+            <div class="grid grid-cols-3 gap-2" >
+                <label>材料{{ index +1 }}の名前
+                <InputText v-model="item.name"></InputText>
+                </label>
+                <label>材料{{ index +1 }}の個数
+                <InputNum v-model="item.amount"></InputNum>
+                </label>
+                <label>材料{{ index +1 }}の単位
+                <InputText v-model="item.unit"></InputText>
+                </label>
+            </div>
+
+            <div class="py-2">
+                <ButtonSecondary :on-click="() => addItem()">材料を追加する</ButtonSecondary>
+                
             </div>
 
 
@@ -27,6 +32,9 @@
             調理方法
             <InputTextarea v-model="form.howToCook" ></InputTextarea>
         </label>
+        <div class="w-full text-center">
+            <ButtonPrimary :on-click="() => submit()">レシピを保存する</ButtonPrimary>
+        </div>
     </div>
   
 
@@ -114,15 +122,15 @@ const openRequest = indexedDB.open(dbName);
 
 //IndexedDBの軌道に成功したら、次のコールバック関数を実行
 openRequest.onsuccess = (event) => {
-
+    alert("起動");
     //起動しただけではレシピの保存をできない
     //まずコールバック関数の引数からIndexedDBのインスタンスを取得する
     //なお型推論が弱いので、より厳密な方を明示している
     const db =(event.target as IDBRequest).result;
-
+    alert("インスタンス作成");
     //トランザクションを開始
     const transaction =db.transaction(tableName,"readwrite");
-
+    alert("トランザクションを開始");
     //テーブル名を指定して、IndexedDBからテーブルを取得する
     //（厳密にはテーブルでなくオブジェクトすとあ）
     //なおこのテーブルは親が事前に作成しておく前提
@@ -130,10 +138,11 @@ openRequest.onsuccess = (event) => {
     const table =transaction.objectStore(tableName) as IDBObjectStore;
     
     //ここまででIndexedDBへの操作が可能になる
+    alert("DB操作可能");
 
     //親から渡されたレシピID
     const id = props.id;
-
+    alert(id);
     //テーブルへのレシピ保存を試行する
     const putRequest = table.put({
         //親がidをindexedDBのキーとして使える用準備してある前提
@@ -147,6 +156,7 @@ openRequest.onsuccess = (event) => {
         })),
         howToCook,
     });
+  
     //レシピ保存に成功したら、親から渡されたリダイレクト関数を実行
     putRequest.onsuccess = () => {
         alert("保存に成功しました");
