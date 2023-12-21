@@ -63,7 +63,7 @@ const props = defineProps<{
     //v-modelで渡せるようmodelvalueを設定
     modelValue:RecipeModel;
     //レシピid
-    id:number;
+    id:string;
     //レシピの書き込み時にリダイレクトする関数
     redirectOnSuccess:string;
 }>()
@@ -119,18 +119,17 @@ const submit = () =>{
 //なので最初にそのためのリクエストをopen関数で実行する
 //その際、引数には使いたい任意のDB名を渡す。
 const openRequest = indexedDB.open(dbName);
-
+alert(openRequest.onsuccess );
 //IndexedDBの軌道に成功したら、次のコールバック関数を実行
 openRequest.onsuccess = (event) => {
-    alert("起動");
     //起動しただけではレシピの保存をできない
     //まずコールバック関数の引数からIndexedDBのインスタンスを取得する
     //なお型推論が弱いので、より厳密な方を明示している
     const db =(event.target as IDBRequest).result;
-    alert("インスタンス作成");
+
     //トランザクションを開始
     const transaction =db.transaction(tableName,"readwrite");
-    alert("トランザクションを開始");
+  
     //テーブル名を指定して、IndexedDBからテーブルを取得する
     //（厳密にはテーブルでなくオブジェクトすとあ）
     //なおこのテーブルは親が事前に作成しておく前提
@@ -138,11 +137,10 @@ openRequest.onsuccess = (event) => {
     const table =transaction.objectStore(tableName) as IDBObjectStore;
     
     //ここまででIndexedDBへの操作が可能になる
-    alert("DB操作可能");
-
+   
     //親から渡されたレシピID
     const id = props.id;
-    alert(id);
+
     //テーブルへのレシピ保存を試行する
     const putRequest = table.put({
         //親がidをindexedDBのキーとして使える用準備してある前提
@@ -156,9 +154,16 @@ openRequest.onsuccess = (event) => {
         })),
         howToCook,
     });
+
+    console.log(id);
+    console.log(name);
+    console.log(items);
+    console.log(howToCook);
   
     //レシピ保存に成功したら、親から渡されたリダイレクト関数を実行
-    putRequest.onsuccess = () => {
+    putRequest.onsuccess = (event) => {
+        const menu = (event.target as IDBRequest).result.value;
+        console.log(menu);
         alert("保存に成功しました");
         navigateTo(props.redirectOnSuccess);
     };
