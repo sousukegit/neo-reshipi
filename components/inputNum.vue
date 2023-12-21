@@ -1,6 +1,9 @@
 <template>
     <div>
-        <input type="number" v-model="modelValue" class="border-2 ">
+        <input type="number" 
+        v-model="modelValue" 
+        min="0"
+        class="w-full rounded-lg border-2 p-2 dark:bg-coffee">
     </div>
 
 
