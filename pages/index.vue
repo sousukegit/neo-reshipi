@@ -1,5 +1,5 @@
 <template>
-      <TheContainer >
+      <TheContainer>
         <AppJumbotron><h1>私のポートフォリオ</h1></AppJumbotron>
         <div class="grid grid-cols-1 sm:grid-cols-2">
           <div>

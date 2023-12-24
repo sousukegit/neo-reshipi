@@ -1,6 +1,6 @@
 <template>
     <TheContainer>
-        <AppH1>レシピメモできるアプリ</AppH1>
+        <AppH1>レシピアプリ</AppH1>
         <div class="text-right"> 
             <ButtonPrimary :on-click="goBack">アプリTOPに戻る</ButtonPrimary>
         </div>
@@ -61,7 +61,7 @@ const form = reactive<RecipeEntity>({
 
 //アプリのトップに戻る関数
 const goBack = () => {
-    navigateTo("/white");
+    navigateTo("/prodect/recipe_memo");
 }
 
 </script>
