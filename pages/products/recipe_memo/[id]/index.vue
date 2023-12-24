@@ -15,6 +15,10 @@
         <div class="whitespace-pre-wrap">
             {{ record?.howToCook }}
         </div>
+        <div class="grid sm:grid-cols-2 gap-3 mt-4">
+            <ButtonDanger :on-click="()=>deleteRechipe()">レシピを削除する</ButtonDanger>
+            <ButtonSecondary :on-click="()=>updateRechipe()">レシピを編集する</ButtonSecondary>
+        </div>
 
     </TheContainer>
 </template>
@@ -71,16 +75,44 @@ onMounted(()=>{
 const goBack = () => {
 navigateTo("/products/recipe_memo");
 }
+ //削除処理
+ //データベースに接続
+ const deleteRechipe = () =>{
+    //間違って推したのか判断
+    const deleteBool = confirm('本当に削除しますか？')
+    if(deleteBool){
+        const openRequest = indexedDB.open(dbName)
+    openRequest.onerror= (event) =>{
+     alert('しっぱい');
+    }
 
-const deleteRechipe = () =>{
-   //削除して元ページへ移動
+    openRequest.onsuccess= (event) =>{    
+        //コールバック関数からindexDBのインスタンスを作成
+        const db = (event.target as IDBRequest).result;
+        //閲覧のみなのでreadonlyトランザクションを開始する
+        const transaction = db.transaction(tableName,"readwrite");    
+        const table = transaction.objectStore(tableName) as IDBObjectStore;
+        //削除するときはdelete関数を使用
+        const request = table.delete(id);
+        
+        request.onerror = (event) => {
+        // エラー処理!
+        alert('削除に失敗しました。');
+        };
 
-    goBack()
-
+        request.onsuccess = (event) => {
+          // request.result に対して行う処理!
+            //削除して元ページへ移動
+            alert('削除しました。前のページに戻ります');
+            goBack()
+        };
+    　}
+    }
 }
 
 const updateRechipe = () =>{
  //更新処理ページへ遷移
+ navigateTo(`/products/recipe_memo/${id}/write`);
 }
 
 </script>

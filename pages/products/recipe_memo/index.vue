@@ -46,7 +46,6 @@ onMounted(()=>{
     
     //コールバック関数からindexDBのインスタンスを作成
     const db = (event.target as IDBRequest).result;
-    alert('せいこう');
     //閲覧のみなのでreadonlyトランザクションを開始する
      const transaction = db.transaction(tableName,"readonly");
     
