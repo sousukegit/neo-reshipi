@@ -1,14 +1,18 @@
 <template>
     <TheContainer >
       <AppH1>レシピアプリ</AppH1>
-      <AppH2>作成したレシピ</AppH2>
+      <div class="flex justify-between">
+        <AppH2>作成したレシピ</AppH2>
+        <ButtonPrimary :on-click="() => goWrite()">レシピを追加する</ButtonPrimary>
+      </div>
+      
       <AppUI>
         <li v-for="link in links" :key="link.url">
           <AppLink :href="link.url">{{ link.text }}</AppLink>
         </li>
       </AppUI>
       <div>
-        <ButtonPrimary :on-click="() => goWrite()">レシピを追加する</ButtonPrimary>
+        
       </div>     
       
   
@@ -33,7 +37,6 @@ const tableName = "recipe"
 
 onMounted(()=>{
   const openRequest = indexedDB.open(dbName)
-  alert('a'+openRequest.onsuccess);
 
   openRequest.onerror= (event) =>{
      alert('しっぱい');
@@ -65,7 +68,8 @@ onMounted(()=>{
           //idからレシピ詳細ページのURLを作成
           //詳細ページはpages/products/recipe_memo/[id]/index.vueの動的ルート
 
-          url:'/products/recipe_memo/${record.id}',
+          url:`/products/recipe_memo/${record.id}`,
+          //url:'/products/recipe_memo/'+ record.id,
           //レシピ名
           text:record.name,
           

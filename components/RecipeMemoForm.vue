@@ -119,7 +119,7 @@ const submit = () =>{
 //なので最初にそのためのリクエストをopen関数で実行する
 //その際、引数には使いたい任意のDB名を渡す。
 const openRequest = indexedDB.open(dbName);
-alert(openRequest.onsuccess );
+
 //IndexedDBの軌道に成功したら、次のコールバック関数を実行
 openRequest.onsuccess = (event) => {
     //起動しただけではレシピの保存をできない
