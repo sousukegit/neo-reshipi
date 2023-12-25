@@ -20,14 +20,10 @@
                 <InputText v-model="item.unit"></InputText>
                 </label>
             </div>
-
-            <div class="py-2">
-                <ButtonSecondary :on-click="() => addItem()">材料を追加する</ButtonSecondary>
-                
-            </div>
-
-
         </div>
+        <div class="py-2">
+                <ButtonSecondary :on-click="() => addItem()">材料を追加する</ButtonSecondary>                
+            </div>
         <label>
             調理方法
             <InputTextarea v-model="form.howToCook" ></InputTextarea>
@@ -155,11 +151,7 @@ openRequest.onsuccess = (event) => {
         howToCook,
     });
 
-    console.log(id);
-    console.log(name);
-    console.log(items);
-    console.log(howToCook);
-  
+
     //レシピ保存に成功したら、親から渡されたリダイレクト関数を実行
     putRequest.onsuccess = (event) => {
         const menu = (event.target as IDBRequest).result.value;
