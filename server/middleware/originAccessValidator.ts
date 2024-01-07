@@ -1,3 +1,4 @@
+
 //CloudFrontから渡されるはずのリファラを検証して、
 //CloudFrontを経由しないアクセスをブロック
 export default defineEventHandler(async (event) => {

@@ -1,0 +1,8 @@
+export default defineEventHandler( async (event) => {
+
+    await new Promise((resolve) => setTimeout(resolve,1000));
+    const messages = ["hello","my","name","is","sousuke"]
+    return {
+        message:messages[Math.floor(Math.random()*messages.length)]
+    }
+})
