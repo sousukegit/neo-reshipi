@@ -1,0 +1,33 @@
+
+<template>
+<div>$fetch</div>
+<p>data:{{ data }}</p>
+<p>pending:{{ pending }}</p>
+<p>error:{{ error }}</p>
+</template>
+<script setup lang="ts">
+const pending = ref(true);
+const error = ref(null);
+const data = ref<{message:string}|null>(null);
+
+
+
+//fetch関数で非同期処理
+//第一引数はAPI先、第二引数はオプション
+$fetch("/api/hello",{
+    headers:{Authorization:"dummy"}
+})
+//戻り値はPromise型
+//成功したとき.thenで次の処理
+.then((_data) => {
+    data.value = _data
+    pending.value = false;
+})
+//.chathでエラー時の処理
+.catch((_error)=>{
+    error.value = _error;
+    pending.value = false;
+})
+
+
+</script>

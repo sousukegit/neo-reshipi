@@ -1,0 +1,34 @@
+export default defineEventHandler(async(event)=>{
+ //jsonで送付される予定のリクエストボディを取得と同時にオブジェクトに変換
+
+ //readボディ関数でリクエストボディに入っているオブジェクトを取得
+ const body = await readBody(event);
+ //nameとmessageのみ取得
+ const {name, message} = body
+
+ //nameとbodyがなければ400エラーにする
+ if(!name){
+    throw createError({
+      statusCode:400,
+      message:"name is required",  
+    });
+ }
+ if(!message){
+    throw createError({
+        statusCode:400,
+        message:"message is required",  
+      }); 
+ }
+
+ //本来ならここでDB処理
+ //テストなので割愛
+
+ //完了したとみなしてレスポンスを返す
+ return{
+    //登録完了日時を記載
+    create_at : new Date().getTime(),
+    //登録した名前とメッセージを返す
+    name,
+    message,
+ }
+})

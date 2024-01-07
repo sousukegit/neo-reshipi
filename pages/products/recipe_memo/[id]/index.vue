@@ -69,7 +69,7 @@ onMounted(()=>{
         navigateTo('/products/recipe_memo');
     }
     };
-　}
+}
 })
 //アプリのトップに戻る関数
 const goBack = () => {
@@ -81,7 +81,7 @@ navigateTo("/products/recipe_memo");
     //間違って推したのか判断
     const deleteBool = confirm('本当に削除しますか？')
     if(deleteBool){
-        const openRequest = indexedDB.open(dbName)
+    const openRequest = indexedDB.open(dbName)
     openRequest.onerror= (event) =>{
      alert('しっぱい');
     }

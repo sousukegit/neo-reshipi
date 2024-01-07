@@ -1,0 +1,14 @@
+<template>
+<div>usefetch</div>
+<p>data:{{ data }}</p>
+<p>pending:{{ pending }}</p>
+<p>error:{{ error }}</p>
+<button @click="refresh()" class="bg-slate-400">ref</button>
+</template>
+<script setup lang="ts">
+const {data,pending,error,refresh} = await useFetch("/api/hello",{
+    headers:{
+        Authorization:"dummy token"
+    }
+})
+</script>
