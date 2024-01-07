@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="fixed bottom-8">
-        <ButtonPrimary :on-click="showModal">モーダル</ButtonPrimary>
+        <ButtonAdd :on-click="showModal">+</ButtonAdd>
     </div>
 
     <Teleport v-if="doesShowModal" to="#the_container">
@@ -47,6 +47,7 @@
         </div>
     </Teleport>
 </TheContainer>
+
 </template>
 <script setup lang="ts">
 //掲示板の内容を初期表示時に取得
