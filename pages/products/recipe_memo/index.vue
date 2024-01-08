@@ -11,11 +11,7 @@
           <AppLink :href="link.url">{{ link.text }}</AppLink>
         </li>
       </AppUI>
-      <div>
-        
-      </div>     
-      
-  
+
     </TheContainer>
 
 </template>
