@@ -50,6 +50,10 @@
 
 </template>
 <script setup lang="ts">
+
+//server/apiを使用するとAWSで500エラー発生
+//恐らくserver/apiを何らかの理由でlambdaが使用できない
+
 //掲示板の内容を初期表示時に取得
 
 //useFetchはcloudfront経由の処理ではないため、リクエストヘッダにrefferがついていない
