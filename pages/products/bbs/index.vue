@@ -1,9 +1,9 @@
 <template>
     <TheContainer>
         <AppH1>インスタストーリー機能の掲示板</AppH1>
-        <!-- <div 
+        <div 
         class="my-8 grid border-separate grid-cols-1 gap-4 divide-y border-2">
-            <div v-if="pending">読み込み中・・・</div>
+            <!-- <div v-if="pending">読み込み中・・・</div>
             <div v-else-if="error">エラーが発生しました。再度お試しください</div>
             <div v-else-if="!data?.posts||!data.posts.length">投稿がありません</div>
             <div v-else v-for="{post,createAt} in data?.posts"
@@ -14,7 +14,7 @@
                 {timeZone:"Asia/Tokyo"},)            
                     }}</div>
                 <div>{{ post }}</div>
-            </div>
+            </div> -->
         </div>
         <div class="fixed bottom-8">
             <ButtonAdd :on-click="showModal">+</ButtonAdd>
@@ -30,9 +30,9 @@
                 }"
                 class="fixed inset-0 h-screen w-screen items-center justify-center
                 bg-coffee bg-opacity-50 py-8 px-2 dark:bg-cream dark:bg-opacity-30"
-                > -->
+                > 
                 
-                <!-- <button
+                 <button
                 class="absolute top-0 right-0 m-6 text-5xl font-bold text-coffee hover:opacity-70 dark:text-cream"
                 @click="doesShowModal = false"
                 >×
@@ -45,7 +45,7 @@
                     <ButtonPrimary :on-click="write">投稿する</ButtonPrimary>
                 </div>       
             </div>
-        </Teleport> -->
+        </Teleport>
     </TheContainer>
     
     </template>
