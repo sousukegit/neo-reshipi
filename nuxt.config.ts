@@ -16,7 +16,10 @@ export default defineNuxtConfig({
     //npm rub devのときはdevelopment
     isDev:process.env.NODE_ENV === "development"
   },
-  css: ["~/assets/css/tailwind.css",],
+  css: ["~/assets/css/tailwind.css",'@fortawesome/fontawesome-svg-core/styles.css'],
+  plugins: [
+    '@/plugins/fontawesome.ts'
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},

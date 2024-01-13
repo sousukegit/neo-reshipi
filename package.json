@@ -10,6 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/vue-fontawesome": "^3.0.5",
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.10.1",
     "@types/uuid": "^9.0.7",
@@ -22,6 +25,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@aws-sdk/lib-dynamodb": "^3.485.0"
+    "@aws-sdk/lib-dynamodb": "^3.485.0",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1"
   }
 }
