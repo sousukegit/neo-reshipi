@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@aws-sdk/lib-dynamodb": "^3.485.0",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1"
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1"
   }
 }

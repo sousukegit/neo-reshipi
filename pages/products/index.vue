@@ -11,9 +11,7 @@
       <AppLink href="https://clever-otter-7d9c22.netlify.app/">サウナマップ</AppLink>
       <!--github ブログ２こ　案件対応したもの　マップなど-->
       <AppLink href="https://branch-marketing-hime.com/"> SNSマーケティングのLP</AppLink>
-      <AppLink href="">スクール予約システム</AppLink>
-
-  
+      <AppLink href="">スクール予約システム</AppLink>  
     </TheContainer>
 
 </template>

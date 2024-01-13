@@ -7,6 +7,11 @@
       <div class="container grid grid-cols-1 sm:grid-cols-2">
         <div class="mx-auto">
           <AppIcon pic-src="/img/icon.jpg"></AppIcon>
+          <div class="flex justify-center gap-3 mt-4 mb-2">
+            <BrandIconMini link="https://github.com/sousukegit"><font-awesome-icon :icon="['fab', 'github']" alt="GitHab"/></BrandIconMini>
+            <BrandIconMini link="https://twitter.com/sousuke_tec"><font-awesome-icon :icon="['fab', 'twitter']" alt="Twitter"/></BrandIconMini>
+            <BrandIconMini link="https://sousuke-neosoul.com/"><font-awesome-icon :icon="['far', 'pen-to-square']"  alt="個人ブログ"/></BrandIconMini>
+          </div>
         </div>        
         <div>
           <AppH3>私について</AppH3>
@@ -19,7 +24,7 @@
       </div>  
         <!-- スキルスタックセクション -->
       <AppH2>スキルスタック</AppH2>  
-      <p >私は以下のプログラミング言語を取り扱ってきました。</p>
+      <p >メインで以下のプログラミング言語を取り扱ってきました。</p>
 
       <!-- フロントエンド -->
       <SkillArea>
@@ -33,8 +38,9 @@
                       <ProfileBadge>ウェブサイト製作</ProfileBadge>
                       <ProfileBadge>フロントエンド開発</ProfileBadge>
                   </div>
+                  <p>モダンな技術のフロントエンド開発が可能です。</p>
                   <p>社内WEBアプリのフロントエンド開発をベンダーとGithabで共同開発を行いました。</p><br>
-                  <p>VUE3・Nuxt3を用いたWebサイト・Webアプリのフロントエンド開発ができます。</p><br>
+                  <p>フレームワークはVUE3・Nuxt3を用いた開発ができます。</p><br>
                 </div>
         </div>
       </SkillArea>   
@@ -65,12 +71,23 @@
                   <div class="flex flex-wrap justify-center sm:justify-start gap-3 lg:w-auto lg:justify-start mt-6 mb-8">
                       <ProfileBadge>システム運用</ProfileBadge>
                   </div>
+                  <p>基礎的なDB操作・設計が可能です。</p>
                   <p>DB設計・夜間バッチのストアド開発・マスタ管理・SQLチューニング等幅広く行ってきました。</p><br>
                   <p>MySQL・Oracle・Postgresの言語が扱えます。</p><br>
                 </div>
         </div>
       </SkillArea>
-      <div>その他</div>
+      <div class="border my-10">
+        <div class="flex justify-center">
+          <AppH3>その他経験のあるスキル</AppH3>
+        </div>
+        <div class="grid ">
+          <font-awesome-icon :icon="['fab', 'aws']" />
+          <font-awesome-icon :icon="['fab', 'wordpress']" />
+          <font-awesome-icon :icon="['fab', 'php']" />
+          <!-- レイルズとかTailwindcssとかのロゴ -->
+        </div>
+      </div>
      
     </TheContainer>
 
