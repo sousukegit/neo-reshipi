@@ -6,9 +6,12 @@
       <div>プロフィール分</div>
       <AppH2>作成した制作物</AppH2>
       <AppLink href="/products/recipe_memo">レシピ</AppLink>
+      <AppLink href="">ストーリー風のブログ</AppLink>
       <div>あああああ</div>
-      <AppLink href="">マップ</AppLink>
+      <AppLink href="https://clever-otter-7d9c22.netlify.app/">サウナマップ</AppLink>
       <!--github ブログ２こ　案件対応したもの　マップなど-->
+      <AppLink href="https://branch-marketing-hime.com/"> SNSマーケティングのLP</AppLink>
+      <AppLink href="">スクール予約システム</AppLink>
 
   
     </TheContainer>
