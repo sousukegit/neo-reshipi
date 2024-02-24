@@ -3,7 +3,7 @@
       <AppH1>レシピアプリ</AppH1>
       <div class="flex justify-between">
         <AppH2>作成したレシピ</AppH2>
-        <ButtonPrimary :on-click="() => goWrite()">レシピを追加する</ButtonPrimary>
+
       </div>
       
       <AppUI>
@@ -11,8 +11,9 @@
           <AppLink :href="link.url">{{ link.text }}</AppLink>
         </li>
       </AppUI>
-
+      <ButtonAdd :on-click="() => goWrite()">+</ButtonAdd>
     </TheContainer>
+    
 
 </template>
 

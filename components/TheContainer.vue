@@ -1,6 +1,6 @@
 <template>
 <!-- 共通機能 -->
-<div :class="mode">
+<div :class="mode" id="the_container">
     <div class="min-h-screen bg bg-main-300 py-2 px-4 text-coffee dark:bg-coffee dark:text-main-100">
 
         <div class="flex justify-between">
